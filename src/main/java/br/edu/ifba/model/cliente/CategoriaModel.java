@@ -17,9 +17,9 @@ public class CategoriaModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idCategoria;
-
     private String nomeCategoria;
 
+    //* Relação com Cliente */
     @OneToMany(mappedBy = "categoriaCliente", cascade = CascadeType.ALL)
     private List<ClienteModel> clientes;
 

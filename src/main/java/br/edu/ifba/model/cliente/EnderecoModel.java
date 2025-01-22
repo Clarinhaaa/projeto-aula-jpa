@@ -11,13 +11,13 @@ public class EnderecoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idEndereco;
-
     private String rua;
     private int numeroCasa;
     private String bairro;
     private String cidade;
     private String estado;
 
+    //* Relação com Cliente */
     @OneToOne(mappedBy = "enderecoCliente")
     private ClienteModel clienteEndereco;
 

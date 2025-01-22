@@ -1,19 +1,26 @@
 package br.edu.ifba.model.venda;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 @Entity(name = "Produto")
 public class ProdutoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idProduto;
-
     private String descricaoProduto;
     private int estoqueProduto;
     private double valorProduto;
+
+    //* Relação com Venda */
+    @ManyToMany(mappedBy = "produtos")
+    private List<VendaModel> vendas = new ArrayList<VendaModel>();
 
     public ProdutoModel() {}
 
@@ -54,6 +61,14 @@ public class ProdutoModel {
 
     public void setValorProduto(double valorProduto) {
         this.valorProduto = valorProduto;
+    }
+
+    public List<VendaModel> getVendas() {
+        return vendas;
+    }
+
+    public void setVendas(List<VendaModel> vendas) {
+        this.vendas = vendas;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package br.edu.ifba.model.cliente;
 
 import java.io.Serializable;
+import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -9,25 +10,33 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+
+import br.edu.ifba.model.venda.VendaModel;
 
 @Entity(name = "Cliente")
 public class ClienteModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idCliente;
-
     private String nomeCliente;
     private String cpfCliente;
     private String rgCliente;
 
+    //* Relação com Categoria */
     @ManyToOne
     @JoinColumn(name = "fkIdCategoria", nullable = false)
     private CategoriaModel categoriaCliente;
 
+    //* Relação com Endereço */
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fkIdEndereco", nullable = false)
     private EnderecoModel enderecoCliente;
+
+    //* Relação com Venda */
+    @OneToMany(mappedBy = "clienteVenda", cascade = CascadeType.ALL)
+    private List<VendaModel> vendasCliente;
 
     public ClienteModel() {}
 
