@@ -1,13 +1,15 @@
-package br.edu.ifba.model;
+package br.edu.ifba.model.cliente;
 
 import java.io.Serializable;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 
 @Entity(name = "Cliente")
 public class ClienteModel implements Serializable {
@@ -23,17 +25,20 @@ public class ClienteModel implements Serializable {
     @JoinColumn(name = "fkIdCategoria", nullable = false)
     private CategoriaModel categoriaCliente;
 
-    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fkIdEndereco", nullable = false)
+    private EnderecoModel enderecoCliente;
 
     public ClienteModel() {}
 
     public ClienteModel(int idCliente, String nomeCliente, String cpfCliente, String rgCliente,
-            CategoriaModel categoriaCliente) {
+            CategoriaModel categoriaCliente, EnderecoModel enderecoCliente) {
         this.idCliente = idCliente;
         this.nomeCliente = nomeCliente;
         this.cpfCliente = cpfCliente;
         this.rgCliente = rgCliente;
         this.categoriaCliente = categoriaCliente;
+        this.enderecoCliente = enderecoCliente;
     }
 
     public int getIdCliente() {
@@ -76,10 +81,19 @@ public class ClienteModel implements Serializable {
         this.categoriaCliente = categoriaCliente;
     }
 
+    public EnderecoModel getEnderecoCliente() {
+        return enderecoCliente;
+    }
+
+    public void setEnderecoCliente(EnderecoModel enderecoCliente) {
+        this.enderecoCliente = enderecoCliente;
+    }
+
     @Override
     public String toString() {
-        return "ClienteModel [id=" + idCliente + ", nome=" + nomeCliente + ", cpf=" + cpfCliente
-                + ", rg=" + rgCliente + ", categoria=" + categoriaCliente.getNomeCategoria() + "]";
+        return "ClienteModel [idCliente=" + idCliente + ", nomeCliente=" + nomeCliente + ", cpfCliente=" + cpfCliente
+                + ", rgCliente=" + rgCliente + ", categoriaCliente=" + categoriaCliente.getIdCategoria() + ", enderecoCliente="
+                + enderecoCliente.getIdEndereco() + "]";
     }
     
 }

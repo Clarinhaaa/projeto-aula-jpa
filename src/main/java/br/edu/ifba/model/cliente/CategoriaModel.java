@@ -1,4 +1,4 @@
-package br.edu.ifba.model;
+package br.edu.ifba.model.cliente;
 
 import java.io.Serializable;
 import java.util.List;

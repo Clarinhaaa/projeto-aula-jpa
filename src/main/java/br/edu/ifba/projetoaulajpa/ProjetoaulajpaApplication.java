@@ -4,8 +4,9 @@ package br.edu.ifba.projetoaulajpa;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import br.edu.ifba.dao.GetEntityManager;
-import br.edu.ifba.model.CategoriaModel;
-import br.edu.ifba.model.ClienteModel;
+import br.edu.ifba.model.cliente.CategoriaModel;
+import br.edu.ifba.model.cliente.ClienteModel;
+import br.edu.ifba.model.cliente.EnderecoModel;
 import jakarta.persistence.EntityManager;
 
 @SpringBootApplication
@@ -16,15 +17,15 @@ public class ProjetoaulajpaApplication {
 
 		EntityManager em = GetEntityManager.getConnectionJpa();
 
-		ClienteModel cli = new ClienteModel();
-		cli.setNomeCliente("Ana Clara");
-		cli.setCpfCliente("1234567890");
-		cli.setRgCliente("12345678");
+		/* ClienteModel cli = new ClienteModel();
+		cli.setNomeCliente("Vinícius");
+		cli.setCpfCliente("87545412396");
+		cli.setRgCliente("32541578");
 		cli.setCategoriaCliente(em.find(CategoriaModel.class, 1));
 
 		em.getTransaction().begin();
 		em.persist(cli);
-		em.getTransaction().commit();
+		em.getTransaction().commit(); */
 	}
 
 }

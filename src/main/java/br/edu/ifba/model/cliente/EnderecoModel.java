@@ -1,11 +1,10 @@
-package br.edu.ifba.model;
+package br.edu.ifba.model.cliente;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
-//TODO: desafio de relacionar esta tabela com Cliente
+import jakarta.persistence.OneToOne;
 
 @Entity(name = "Endereco")
 public class EnderecoModel {
@@ -19,15 +18,20 @@ public class EnderecoModel {
     private String cidade;
     private String estado;
 
+    @OneToOne(mappedBy = "enderecoCliente")
+    private ClienteModel clienteEndereco;
+
     public EnderecoModel() {}
 
-    public EnderecoModel(int idEndereco, String rua, int numeroCasa, String bairro, String cidade, String estado) {
+    public EnderecoModel(int idEndereco, String rua, int numeroCasa, String bairro, String cidade, String estado,
+            ClienteModel clienteEndereco) {
         this.idEndereco = idEndereco;
         this.rua = rua;
         this.numeroCasa = numeroCasa;
         this.bairro = bairro;
         this.cidade = cidade;
         this.estado = estado;
+        this.clienteEndereco = clienteEndereco;
     }
 
     public int getIdEndereco() {
@@ -78,10 +82,18 @@ public class EnderecoModel {
         this.estado = estado;
     }
 
+    public ClienteModel getClienteEndereco() {
+        return clienteEndereco;
+    }
+
+    public void setClienteEndereco(ClienteModel clienteEndereco) {
+        this.clienteEndereco = clienteEndereco;
+    }
+
     @Override
     public String toString() {
         return "EnderecoModel [idEndereco=" + idEndereco + ", rua=" + rua + ", numeroCasa=" + numeroCasa + ", bairro="
-                + bairro + ", cidade=" + cidade + ", estado=" + estado + "]";
+                + bairro + ", cidade=" + cidade + ", estado=" + estado + ", clienteEndereco=" + clienteEndereco.getIdCliente() + "]";
     }
-    
+
 }
