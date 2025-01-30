@@ -3,9 +3,9 @@ package br.edu.ifba.app;
 //import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import br.edu.ifba.dao.ClienteDao;
-import br.edu.ifba.dao.GetEntityManager;
-import jakarta.persistence.EntityManager;
+import br.edu.ifba.dao.cliente.*;
+/* import br.edu.ifba.dao.GetEntityManager;
+import jakarta.persistence.EntityManager; */
 
 @SpringBootApplication
 public class ProjetoaulajpaApplication {
@@ -15,17 +15,18 @@ public class ProjetoaulajpaApplication {
 		//EntityManager em = GetEntityManager.getConnectionJpa();
 
 		ClienteDao cliDao = new ClienteDao();
+		EnderecoDao endDao = new EnderecoDao();
 
 		System.out.println("TODOS OS CLIENTES:");
-		cliDao.getAllClientes().forEach(System.out::println);
-		System.out.println();
-		
-		System.out.println("CLIENTE POR ID:");
-		System.out.println(cliDao.getClienteById(3));
+		cliDao.getAll().forEach(System.out::println);
 		System.out.println();
 
-		System.out.println("CLIENTES POR CATEGORIA:");
-		cliDao.getClienteByCategoria(2).forEach(System.out::println);
+		System.out.println("TODOS OS ENDEREÇOS:");
+		endDao.getAll().forEach(System.out::println);
+		System.out.println();
+
+		System.out.println("ENDEREÇO POR BAIRRO:");
+		System.out.println(endDao.getByBairro("caminho dos lagos"));
 		System.out.println();
 	}
 }
