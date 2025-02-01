@@ -30,7 +30,7 @@ public class ClienteModel implements Serializable {
     private CategoriaModel categoriaCliente;
 
     //* Relação com Endereço */
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "fkIdEndereco", nullable = false)
     private EnderecoModel enderecoCliente;
 

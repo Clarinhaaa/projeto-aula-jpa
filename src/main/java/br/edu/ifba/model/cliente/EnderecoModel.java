@@ -1,5 +1,6 @@
 package br.edu.ifba.model.cliente;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,7 +19,7 @@ public class EnderecoModel {
     private String estado;
 
     //* Relação com Cliente */
-    @OneToOne(mappedBy = "enderecoCliente")
+    @OneToOne(mappedBy = "enderecoCliente", cascade = CascadeType.ALL)
     private ClienteModel clienteEndereco;
 
     public EnderecoModel() {}
