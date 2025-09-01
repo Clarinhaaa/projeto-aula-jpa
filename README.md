@@ -1,1 +1,1 @@
-Essa é uma atividade realizada para as disciplinas de Estrutura de Dados e Banco de Dados do curso Técnico em Informática Integrado no IFBA, com o objetivo de aprender a desenvolver APIs com a ferramenta JPA.
+Essa é uma atividade realizada para as disciplinas de Estrutura de Dados e Banco de Dados do curso Técnico em Informática Integrado no IFBA, com o objetivo de aprender a desenvolver APIs com a ferramenta JPA e a linguagem JPQL.
